@@ -14,10 +14,14 @@ public class Attack : MonoBehaviour
     public float distance;
     public LayerMask hitable;
 
+    private bool isHit;
+
     public int damage;
 
     void Start()
     {
+        isHit = true;
+        
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindObjectOfType<Enemy>();
 
@@ -35,10 +39,11 @@ public class Attack : MonoBehaviour
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, hitable);
         if (hitInfo.collider != null)
         {
-            if (hitInfo.collider.CompareTag("Enemy"))
+            if (hitInfo.collider.CompareTag("Enemy") && isHit)
             {
                 Debug.Log("Kena Hit");
                 hitInfo.collider.GetComponent<Enemy>().KenaDamage(damage);
+                isHit = false;
             }
         }
         Debug.DrawRay(transform.position, transform.up, Color.red, 2f);
