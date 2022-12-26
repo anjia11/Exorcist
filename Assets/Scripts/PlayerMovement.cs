@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveHorizontal;
     public Rigidbody2D rb2D;
 
-    private bool isFacingLeft = true;
+    public bool isFacingLeft = true;
     [Header("Cek Ground")]
     public Transform groundCheck;
     public float checkRadius;
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         rb2D.velocity = new Vector2(moveHorizontal * speed, rb2D.velocity.y);
     }
 
-    void Flip(){
+    public void Flip(){
         if (isFacingLeft && moveHorizontal > 0f || isFacingLeft && isAttack == true && transform.position.x < enemy.transform.position.x){
             transform.eulerAngles = new Vector3(0, 180, 0); //facing right
             isFacingLeft = false;

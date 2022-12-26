@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     void Update() {
     if (healtPoint <= 0){
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
     }
     public void KenaDamage(int damage){
@@ -17,4 +17,11 @@ public class Enemy : MonoBehaviour
             healtPoint -= damage;
         }
     }
+
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     if (other.gameObject.tag == "Weapon"){
+    //         healtPoint -= 1000;
+    //     }
+    //     Debug.Log(healtPoint);
+    // }
 }
