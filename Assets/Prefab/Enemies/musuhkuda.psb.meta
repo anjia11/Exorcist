@@ -2539,7 +2539,7 @@ ScriptedImporter:
     uvTransform: {x: -303, y: 362}
   - name: taring
     originalName: 
-    pivot: {x: 0.14132303, y: 0.8320796}
+    pivot: {x: 0.5526463, y: 0.5064782}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -3141,7 +3141,7 @@ ScriptedImporter:
     uvTransform: {x: -380, y: 331}
   - name: badan
     originalName: 
-    pivot: {x: 0.33604148, y: 0.07416934}
+    pivot: {x: 0.50334597, y: 0.46685094}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

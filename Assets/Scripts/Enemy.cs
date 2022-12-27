@@ -17,11 +17,4 @@ public class Enemy : MonoBehaviour
             healtPoint -= damage;
         }
     }
-
-    // private void OnCollisionEnter2D(Collision2D other) {
-    //     if (other.gameObject.tag == "Weapon"){
-    //         healtPoint -= 1000;
-    //     }
-    //     Debug.Log(healtPoint);
-    // }
 }

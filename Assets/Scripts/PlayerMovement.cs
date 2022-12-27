@@ -26,6 +26,12 @@ public class PlayerMovement : MonoBehaviour
 
     Enemy enemy;
 
+    [Header("KNOCK Back")]
+    public float KBForce;
+    public float KBCounter;
+    public float KBTotalTime;
+    public bool KBFromRight;
+
     void Start() {
         doubleJump = doubleJumpValue;
         animator = GetComponent<Animator>();
@@ -50,7 +56,11 @@ public class PlayerMovement : MonoBehaviour
     }
     
     void FixedUpdate() {
-        rb2D.velocity = new Vector2(moveHorizontal * speed, rb2D.velocity.y);
+        if (KBCounter <= 0){
+            rb2D.velocity = new Vector2(moveHorizontal * speed, rb2D.velocity.y);
+        }else{
+            KnockBack();
+        }
     }
 
     public void Flip(){
@@ -89,5 +99,17 @@ public class PlayerMovement : MonoBehaviour
             //animator.SetBool("IsJumping", true);
             rb2D.velocity = Vector2.up * jumpForce;
         }
+    }
+
+    void KnockBack(){
+        if (KBFromRight == true){
+            rb2D.velocity = new Vector2(-KBForce, KBForce);
+        }
+
+        if (KBFromRight == false){
+            rb2D.velocity = new Vector2(KBForce, KBForce);
+        }
+
+        KBCounter -= Time.deltaTime;
     }
 }
