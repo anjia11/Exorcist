@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     void Update() {
     if (healtPoint <= 0){
+        healtPoint = 0;
         Destroy(gameObject);
     }
     }

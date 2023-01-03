@@ -127,7 +127,9 @@ MonoBehaviour:
   - {fileID: 0}
   isHit: 0
   distance: 0.5
+  minRangeAttack: 10
   hitable:
     serializedVersion: 2
     m_Bits: 192
+  closeEnemy: {fileID: 0}
   damage: 1000

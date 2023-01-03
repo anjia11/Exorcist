@@ -11,6 +11,7 @@ public class Attack : MonoBehaviour
     [SerializeField] GameObject [] target;
     public bool isHit;
     public float distance;
+    public float minRangeAttack;
     [SerializeField] public LayerMask hitable;
     public Transform closeEnemy = null;
 
@@ -22,6 +23,7 @@ public class Attack : MonoBehaviour
 
     void Start()
     {
+        target = GameObject.FindGameObjectsWithTag("Enemy");
         isHit = true;
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("PlayerM").GetComponent<PlayerMovement>();
@@ -44,15 +46,16 @@ public class Attack : MonoBehaviour
             {
                 Debug.Log("Kena Hit");
                 hitInfo.collider.GetComponent<Enemy>().KenaDamage(damage);
-                Invoke("DestroyPedangTerbang", 0.5f);
+                Invoke("DestroyPedangTerbang", 0f);
                 isHit = false;
+                Debug.DrawRay(transform.position, transform.up, Color.red, 0.5f);
             }
         }
     }
 
     public Transform GetClosestEnemy(){
-        target = GameObject.FindGameObjectsWithTag("Enemy");
-        float closeDistance = Mathf.Infinity;
+        
+        float closeDistance = minRangeAttack;
         Transform trans = null;
         
         foreach (GameObject go in target){
@@ -67,6 +70,7 @@ public class Attack : MonoBehaviour
                 float rot = Mathf.Atan2(-moveDirection.y, -moveDirection.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, rot - 90);
                 Invoke("DestroyPedangTerbang", lifeTime);
+                Debug.DrawLine(transform.position, go.transform.position, Color.green, 0.5f);
             }
         }
         return trans;
